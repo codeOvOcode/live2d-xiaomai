@@ -133,6 +133,8 @@ function loadWidget(config) {
 			// 首次访问加载 指定模型 的 指定材质
 			modelId = 0; // 模型 ID
 			modelTexturesId = 53; // 材质 ID
+			localStorage.setItem("modelId", modelId);
+			localStorage.setItem("modelTexturesId", modelTexturesId);
 		}
 		model.loadModel(modelId, modelTexturesId);
 		fetch(config.waifuPath)
