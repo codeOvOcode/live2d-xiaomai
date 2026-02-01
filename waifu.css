@@ -6,7 +6,7 @@
 	cursor: pointer;
 	font-size: 12px;
 	left: 0;
-	margin-left: -100px;
+	margin-left: 0;
 	padding: 5px 2px 5px 5px;
 	position: fixed;
 	transition: margin-left 1s;
@@ -15,16 +15,16 @@
 }
 
 #waifu-toggle.waifu-toggle-active {
-	margin-left: -50px;
+	margin-left: 0;
 }
 
 #waifu-toggle.waifu-toggle-active:hover {
-	margin-left: -30px;
+	margin-left: 10px;
 }
 
 #waifu {
 	bottom: -1000px;
-	right: 20px;
+	left: 20px;
 	line-height: 0;
 	margin-bottom: -10px;
 	position: fixed;
@@ -81,7 +81,7 @@
 	color: #aaa;
 	opacity: 0;
 	position: absolute;
-	right: 10px;
+	left: 10px;
 	top: 70px;
 	transition: opacity 1s;
 }
