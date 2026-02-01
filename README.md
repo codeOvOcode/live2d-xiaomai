@@ -13,5 +13,5 @@
 在html文件中引入一个js文件即可。
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/codeOvOcode/live2d-xiaomai@v0.2.0/autoload.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/codeOvOcode/live2d-xiaomai@v0.1.0/autoload.js"></script>
 ```
