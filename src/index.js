@@ -126,16 +126,31 @@ function loadWidget(config) {
 		});
 	}
 
-	(function initModel() {
+	(async function initModel() {
 		let modelId = localStorage.getItem("modelId"),
 			modelTexturesId = localStorage.getItem("modelTexturesId");
-		if (modelId === null) {
-			// 首次访问加载 指定模型 的 指定材质
-			modelId = 0; // 模型 ID
-			modelTexturesId = 53; // 材质 ID
-			localStorage.setItem("modelId", modelId);
-			localStorage.setItem("modelTexturesId", modelTexturesId);
+		
+		try {
+			// 先加载模型列表
+			await model.loadModelList();
+			const maxIndex = model.modelList.models.length - 1;
+			
+			// 检查 null 或越界
+			if (modelId === null || modelId > maxIndex || modelId < 0) {
+				modelId = 0; // 模型
+				modelTexturesId = 53; // 材质
+			}
+		} catch (e) {
+			// 如果加载失败（网络错误等），使用安全默认值
+			console.warn("加载模型列表失败，使用默认值", e);
+			modelId = 0;
+			modelTexturesId = 53;
 		}
+		
+		// 确保保存到 localStorage（修复后的值）
+		localStorage.setItem("modelId", modelId);
+		localStorage.setItem("modelTexturesId", modelTexturesId);
+		
 		model.loadModel(modelId, modelTexturesId);
 		fetch(config.waifuPath)
 			.then(response => response.json())
